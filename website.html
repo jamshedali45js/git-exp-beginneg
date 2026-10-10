@@ -1,0 +1,1067 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopEasy | Premium Online Store</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --purple: #7957ff;
+    --pink: #ff5599;
+    --green: #08a653;
+    --dark: #19162e;
+    --light: #f8f6ff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--dark);
+    background: white;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Top announcement bar */
+.topbar {
+    background: linear-gradient(90deg, #19162e, #5835a7, #087c69);
+    color: white;
+    padding: 9px 0;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* Navigation */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px #21133d0c;
+}
+
+nav {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.logo span {
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--purple);
+}
+
+.search {
+    display: flex;
+    background: #f4f1ff;
+    border: 1px solid #e6ddff;
+    border-radius: 30px;
+    overflow: hidden;
+    max-width: 220px;
+}
+
+.search input {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 14px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.search button {
+    padding: 0 13px;
+    border: none;
+    background: transparent;
+}
+
+.cart-button {
+    border: none;
+    background: linear-gradient(120deg, var(--purple), var(--pink));
+    color: white;
+    border-radius: 25px;
+    padding: 10px 15px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Hero section */
+.hero {
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 80% 20%, #ffb9d8 0, transparent 27%),
+        radial-gradient(circle at 75% 85%, #b5a5ff 0, transparent 30%),
+        linear-gradient(120deg, #f6f1ff, #fff5f8, #eafff4);
+}
+
+.hero-content {
+    padding: 65px 0;
+    animation: fadeUp .9s ease both;
+}
+
+.tag {
+    display: inline-block;
+    padding: 7px 16px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    margin: 20px 0;
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.08;
+    letter-spacing: -2px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, var(--green), #11b8c8, var(--purple), var(--pink));
+    background-size: 250%;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: colorMove 6s linear infinite;
+}
+
+.hero p {
+    max-width: 520px;
+    color: #626477;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 24px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(100deg, var(--purple), var(--pink));
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 9px 22px #7957ff35;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px #7957ff45;
+}
+
+/* Categories */
+.section {
+    padding: 55px 0;
+}
+
+.section-title {
+    font-size: 30px;
+    margin-bottom: 8px;
+    letter-spacing: -.8px;
+}
+
+.section-description {
+    color: #77788b;
+    margin-bottom: 25px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.category {
+    text-align: center;
+    padding: 23px 10px;
+    border: 1px solid #eee8ff;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #f6f1ff, #fff5fa);
+    font-weight: bold;
+    transition: .3s;
+}
+
+.category:nth-child(even) {
+    background: linear-gradient(145deg, #eafff5, #f5f3ff);
+}
+
+.category:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px #7957ff19;
+}
+
+.category-icon {
+    display: block;
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+/* Products */
+.products-section {
+    background: linear-gradient(180deg, #f8f6ff, #fff8fb, #f3fff9);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    position: relative;
+    background: white;
+    padding: 13px;
+    border: 1px solid #eee8fa;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px #24104408;
+    transition: .3s;
+    animation: fadeUp .7s ease both;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px #7957ff20;
+    border-color: #d9ceff;
+}
+
+.product-image {
+    height: 190px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 11px;
+    background: linear-gradient(145deg, #f4efff, #fff0f6);
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform .4s;
+    mix-blend-mode: multiply;
+}
+
+.product-card:hover img {
+    transform: scale(1.08);
+}
+
+.sale {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    z-index: 1;
+    padding: 4px 9px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, var(--pink), #ff9b45);
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.product-card h3 {
+    margin-top: 13px;
+    font-size: 15px;
+}
+
+.price {
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.old-price {
+    color: #999;
+    font-size: 12px;
+    text-decoration: line-through;
+    font-weight: normal;
+}
+
+.rating {
+    color: #ffad19;
+    font-size: 14px;
+    margin-bottom: 13px;
+}
+
+.add-cart {
+    width: 100%;
+    padding: 11px 8px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(100deg, var(--purple), var(--pink));
+    transition: .3s;
+}
+
+.add-cart:hover {
+    filter: brightness(.9);
+    transform: translateY(-2px);
+}
+
+/* Benefits */
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 35px;
+    padding: 25px;
+    border-radius: 15px;
+    background: linear-gradient(110deg, #eeeaff, #fff0f7, #e9fff4);
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.benefit-icon {
+    font-size: 28px;
+}
+
+.benefit strong {
+    display: block;
+    font-size: 14px;
+}
+
+.benefit small {
+    color: #747487;
+    font-size: 12px;
+}
+
+/* Promotion banner */
+.promo {
+    padding: 40px;
+    border-radius: 17px;
+    color: white;
+    background: linear-gradient(110deg, #19162e, #5733a1, #087d70);
+    position: relative;
+    overflow: hidden;
+}
+
+.promo:after {
+    content: "✦";
+    position: absolute;
+    right: 9%;
+    top: -40px;
+    font-size: 220px;
+    color: #ffffff12;
+    animation: float 5s ease-in-out infinite;
+}
+
+.promo h2 {
+    font-size: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.promo p {
+    margin: 10px 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.promo .btn {
+    position: relative;
+    z-index: 1;
+    background: white;
+    color: #5733a1;
+}
+
+/* Reviews */
+.reviews {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.review {
+    padding: 23px;
+    border: 1px solid #eee8fa;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px #21133d08;
+    transition: .3s;
+}
+
+.review:hover {
+    transform: translateY(-4px);
+}
+
+.review .stars {
+    color: #ffad19;
+}
+
+.review p {
+    color: #747487;
+    font-size: 13px;
+    margin-top: 9px;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(120deg, #19162e, #29204b, #123c3b);
+    color: white;
+    padding-top: 45px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.4fr;
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+footer h3 {
+    margin-bottom: 13px;
+}
+
+footer p, footer li, footer a {
+    color: #d1ccdf;
+    font-size: 13px;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer li {
+    margin: 7px 0;
+}
+
+footer a:hover {
+    color: #ff9ac7;
+}
+
+.footer-brand {
+    font-size: 25px;
+    font-weight: 900;
+    color: white;
+}
+
+.footer-brand span {
+    color: #ff86b7;
+}
+
+.whatsapp {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    background: #08a653;
+    font-weight: bold;
+}
+
+.copyright {
+    padding: 18px 0;
+    border-top: 1px solid #ffffff22;
+    text-align: center;
+    color: #c7c2d5;
+    font-size: 12px;
+}
+
+/* Toast message */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-width: calc(100% - 40px);
+    padding: 14px 20px;
+    border-radius: 10px;
+    color: white;
+    background: #20183c;
+    box-shadow: 0 10px 30px #0002;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: .3s;
+    z-index: 200;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes colorMove {
+    to { background-position: 250% center; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(12px) rotate(12deg); }
+}
+
+/* Responsive mobile layout */
+@media (max-width: 900px) {
+    .nav-links { gap: 12px; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .benefits { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 650px) {
+    nav { flex-wrap: wrap; padding: 15px 0; }
+    .nav-links {
+        order: 5;
+        width: 100%;
+        overflow-x: auto;
+        padding: 5px 0;
+        gap: 20px;
+    }
+    .nav-links a { white-space: nowrap; }
+    .search { flex: 1; }
+    .search input { width: 100%; }
+    .hero { min-height: 380px; }
+    .hero-content { padding: 50px 0; }
+    .categories { grid-template-columns: repeat(2, 1fr); }
+    .product-grid { gap: 12px; }
+    .product-image { height: 145px; }
+    .product-card { padding: 9px; }
+    .benefits { padding: 17px; gap: 16px 10px; }
+    .benefit { gap: 7px; }
+    .benefit-icon { font-size: 23px; }
+    .benefit strong { font-size: 12px; }
+    .benefit small { font-size: 10px; }
+    .promo { padding: 27px 22px; }
+    .promo h2 { font-size: 27px; }
+    .reviews { grid-template-columns: 1fr; }
+    .footer-grid { gap: 25px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    🚚 Free Shipping on Orders Above Rs. 3000 &nbsp; | &nbsp;
+    ✨ Special Offers Every Day
+</div>
+
+<header>
+    <nav class="container">
+        <a href="#home" class="logo">Shop<span>Easy</span></a>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#products">Shop</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <form class="search" id="searchForm">
+            <input type="search" id="searchInput"
+                   placeholder="Search products..." aria-label="Search products">
+            <button type="submit" aria-label="Search">🔍</button>
+        </form>
+
+        <button class="cart-button" onclick="showCart()">
+            🛒 Cart (<span id="cartCount">0</span>)
+        </button>
+    </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+    <div class="container hero-content">
+        <span class="tag">✦ NEW COLLECTION 2026</span>
+
+        <h1>
+            Upgrade Your<br>
+            <span class="gradient-text">Lifestyle Today!</span>
+        </h1>
+
+        <p>
+            Discover amazing products, beautiful designs and
+            unbeatable value. Your favourite shopping experience
+            starts right here.
+        </p>
+
+        <a href="#products" class="btn">Explore Products →</a>
+    </div>
+</section>
+
+<section class="section container" id="categories">
+    <h2 class="section-title">Explore Categories ✨</h2>
+    <p class="section-description">
+        Find something special for every part of your life.
+    </p>
+
+    <div class="categories">
+        <a class="category" href="#products" data-category="Mobiles">
+            <span class="category-icon">📱</span>
+            Mobiles & Tablets
+        </a>
+
+        <a class="category" href="#products" data-category="Computers">
+            <span class="category-icon">💻</span>
+            Laptops & Computers
+        </a>
+
+        <a class="category" href="#products" data-category="Electronics">
+            <span class="category-icon">🎧</span>
+            Electronics
+        </a>
+
+        <a class="category" href="#products" data-category="Fashion">
+            <span class="category-icon">👟</span>
+            Fashion
+        </a>
+
+        <a class="category" href="#products" data-category="Home">
+            <span class="category-icon">🏠</span>
+            Home & Living
+        </a>
+
+        <a class="category" href="#products" data-category="Beauty">
+            <span class="category-icon">🧴</span>
+            Beauty & Health
+        </a>
+
+        <a class="category" href="#products" data-category="Sports">
+            <span class="category-icon">⚽</span>
+            Sports
+        </a>
+
+        <a class="category" href="#products" data-category="Toys">
+            <span class="category-icon">🧸</span>
+            Toys & Games
+        </a>
+    </div>
+</section>
+
+<section class="section products-section" id="products">
+    <div class="container">
+
+        <h2 class="section-title">Featured Products 🛍️</h2>
+        <p class="section-description">
+            Handpicked favourites at prices you'll love.
+        </p>
+
+        <div class="product-grid" id="productGrid">
+
+            <article class="product-card"
+                     data-name="iPhone 14"
+                     data-category="Mobiles">
+                <span class="sale">SALE</span>
+                <div class="product-image">
+                    <img loading="lazy"
+                         src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=500&q=80"
+                         alt="Smartphone">
+                </div>
+                <h3>iPhone 14</h3>
+                <div class="price">Rs. 189,999
+                    <span class="old-price">Rs. 210,000</span>
+                </div>
+                <div class="rating">★★★★★ <small>4.8</small></div>
+                <button class="add-cart">🛒 Add to Cart</button>
+            </article>
+
+            <article class="product-card"
+                     data-name="Wireless Headphones"
+                     data-category="Electronics">
+                <span class="sale">20% OFF</span>
+                <div class="product-image">
+                    <img loading="lazy"
+                         src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80"
+                         alt="Wireless headphones">
+                </div>
+                <h3>Wireless Headphones</h3>
+                <div class="price">Rs. 7,999
+                    <span class="old-price">Rs. 9,999</span>
+                </div>
+                <div class="rating">★★★★★ <small>4.6</small></div>
+                <button class="add-cart">🛒 Add to Cart</button>
+            </article>
+
+            <article class="product-card"
+                     data-name="Laptop 15.6 inch"
+                     data-category="Computers">
+                <div class="product-image">
+                    <img loading="lazy"
+                         src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=500&q=80"
+                         alt="Laptop computer">
+                </div>
+                <h3>Laptop 15.6"</h3>
+                <div class="price">Rs. 89,999</div>
+                <div class="rating">★★★★★ <small>4.7</small></div>
+                <button class="add-cart">🛒 Add to Cart</button>
+            </article>
+
+            <article class="product-card"
+                     data-name="Smart Watch"
+                     data-category="Electronics">
+                <span class="sale">NEW</span>
+                <div class="product-image">
+                    <img loading="lazy"
+                         src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80"
+                         alt="Smart watch">
+                </div>
+                <h3>Smart Watch</h3>
+                <div class="price">Rs. 12,999</div>
+                <div class="rating">★★★★★ <small>4.5</small></div>
+                <button class="add-cart">🛒 Add to Cart</button>
+            </article>
+
+            <article class="product-card"
+                     data-name="Sports Shoes"
+                     data-category="Fashion">
+                <span class="sale">SALE</span>
+                <div class="product-image">
+                    <img loading="lazy"
+                         src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80"
+                         alt="Sports shoes">
+                </div>
+                <h3>Sports Shoes</h3>
+                <div class="price">Rs. 4,999
+                    <span class="old-price">Rs. 6,999</span>
+                </div>
+                <div class="rating">★★★★★ <small>4.3</small></div>
+                <button class="add-cart">🛒 Add to Cart</button>
+            </article>
+
+            <article class="product-card"
+                     data-name="Home Plant Pot"
+                     data-category="Home">
+                <div class="product-image">
+                    <img loading="lazy"
+                         src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=500&q=80"
+                         alt="Decorative home plant">
+                </div>
+                <h3>Decorative Plant</h3>
+                <div class="price">Rs. 1,499</div>
+                <div class="rating">★★★★★ <small>4.6</small></div>
+                <button class="add-cart">🛒 Add to Cart</button>
+            </article>
+
+            <article class="product-card"
+                     data-name="Travel Backpack"
+                     data-category="Fashion">
+                <div class="product-image">
+                    <img loading="lazy"
+                         src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80"
+                         alt="Travel backpack">
+                </div>
+                <h3>Travel Backpack</h3>
+                <div class="price">Rs. 3,499</div>
+                <div class="rating">★★★★★ <small>4.5</small></div>
+                <button class="add-cart">🛒 Add to Cart</button>
+            </article>
+
+            <article class="product-card"
+                     data-name="Classic Sunglasses"
+                     data-category="Fashion">
+                <div class="product-image">
+                    <img loading="lazy"
+                         src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=500&q=80"
+                         alt="Fashion sunglasses">
+                </div>
+                <h3>Classic Sunglasses</h3>
+                <div class="price">Rs. 2,199</div>
+                <div class="rating">★★★★★ <small>4.4</small></div>
+                <button class="add-cart">🛒 Add to Cart</button>
+            </article>
+
+        </div>
+
+        <div class="benefits">
+            <div class="benefit">
+                <span class="benefit-icon">🛡️</span>
+                <div><strong>Secure Shopping</strong>
+                    <small>Shop with confidence</small></div>
+            </div>
+
+            <div class="benefit">
+                <span class="benefit-icon">🚚</span>
+                <div><strong>Fast Delivery</strong>
+                    <small>Across Pakistan</small></div>
+            </div>
+
+            <div class="benefit">
+                <span class="benefit-icon">💬</span>
+                <div><strong>Customer Support</strong>
+                    <small>We're here to help</small></div>
+            </div>
+
+            <div class="benefit">
+                <span class="benefit-icon">♻️</span>
+                <div><strong>Easy Returns</strong>
+                    <small>Hassle-free service</small></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section container">
+    <div class="promo">
+        <h2>Big Savings! Up to 50% Off 🎉</h2>
+        <p>Discover special deals on your favourite products.</p>
+        <a class="btn" href="#products">Shop Deals →</a>
+    </div>
+</section>
+
+<section class="section container">
+    <h2 class="section-title">What Customers Say 💖</h2>
+    <p class="section-description">
+        A friendly shopping experience matters to us.
+    </p>
+
+    <div class="reviews">
+        <article class="review">
+            <h3>Ahmed Khan</h3>
+            <div class="stars">★★★★★</div>
+            <p>"Amazing products and a smooth shopping experience!"</p>
+        </article>
+
+        <article class="review">
+            <h3>Sara Malik</h3>
+            <div class="stars">★★★★★</div>
+            <p>"Beautiful products and helpful customer service."</p>
+        </article>
+
+        <article class="review">
+            <h3>Usman Raza</h3>
+            <div class="stars">★★★★★</div>
+            <p>"A great selection of products in one place."</p>
+        </article>
+    </div>
+</section>
+
+</main>
+
+<footer id="about">
+    <div class="container footer-grid">
+
+        <div>
+            <div class="footer-brand">Shop<span>Easy</span></div>
+            <p>
+                Your one-stop shop for everyday essentials,
+                technology, fashion and more.
+            </p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Customer Care</h3>
+            <ul>
+                <li><a href="#contact">FAQs</a></li>
+                <li><a href="#contact">Shipping Policy</a></li>
+                <li><a href="#contact">Return Policy</a></li>
+                <li><a href="#contact">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div id="contact">
+            <h3>Contact Us</h3>
+            <p>📧 jameshedali45js@yourstore.com</p>
+            <p>📍 Pakistan</p>
+
+            <!-- Replace the number with your WhatsApp number -->
+            <a class="whatsapp"
+               href="https://wa.me/03013461407"
+               target="_blank"
+               rel="noopener noreferrer">
+                💬 Chat on WhatsApp
+            </a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 ShopEasy. All rights reserved.
+    </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+let cart = 0;
+let cartItems = [];
+let toastTimer;
+
+const toast = document.getElementById("toast");
+
+function showMessage(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+}
+
+// Add products to the demo cart
+document.querySelectorAll(".add-cart").forEach(button => {
+    button.addEventListener("click", () => {
+        const card = button.closest(".product-card");
+        const name = card.dataset.name;
+
+        cart++;
+        cartItems.push(name);
+
+        document.getElementById("cartCount").textContent = cart;
+
+        showMessage(name + " added to your cart!");
+    });
+});
+
+// Show items in the demo cart
+function showCart() {
+    if (cartItems.length === 0) {
+        showMessage("Your cart is empty. Explore our products!");
+        return;
+    }
+
+    const summary = cartItems.reduce((result, name) => {
+        result[name] = (result[name] || 0) + 1;
+        return result;
+    }, {});
+
+    const details = Object.entries(summary)
+        .map(([name, quantity]) => name + " × " + quantity)
+        .join(", ");
+
+    showMessage("Cart: " + details);
+}
+
+// Search products
+document.getElementById("searchForm").addEventListener("submit", event => {
+    event.preventDefault();
+
+    const query = document.getElementById("searchInput")
+        .value.trim().toLowerCase();
+
+    let matches = 0;
+
+    document.querySelectorAll(".product-card").forEach(card => {
+        const name = card.dataset.name.toLowerCase();
+        const category = card.dataset.category.toLowerCase();
+
+        const found = name.includes(query) || category.includes(query);
+
+        card.style.display = found ? "" : "none";
+
+        if (found) matches++;
+    });
+
+    document.getElementById("products").scrollIntoView({
+        behavior: "smooth"
+    });
+
+    showMessage(
+        query
+            ? matches + " matching product(s) found."
+            : "Showing all products."
+    );
+});
+
+// Filter products by category
+document.querySelectorAll(".category").forEach(category => {
+    category.addEventListener("click", () => {
+        const selected = category.dataset.category.toLowerCase();
+
+        let matches = 0;
+
+        document.querySelectorAll(".product-card").forEach(card => {
+            const found =
+                card.dataset.category.toLowerCase() === selected;
+
+            card.style.display = found ? "" : "none";
+
+            if (found) matches++;
+        });
+
+        showMessage(
+            matches
+                ? "Showing " + category.innerText.trim()
+                : "No products in this category yet."
+        );
+    });
+});
+</script>
+
+</body>
+</html>
